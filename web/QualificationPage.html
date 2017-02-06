@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+<link href="styling.css" rel="stylesheet" type="text/css" />
+
+<head>
+    <title>Qualifications</title> 
+ 
+</head>
+<center>
+<body onload="document.QualificationPage.noq.focus();" bgcolor="white" font-color="blue">
+
+<script type="text/javascript">
+
+  function checkForm(form)
+  {
+   if(form.noq.value == "") {
+      alert("Error: name of qual cannot be blank!");
+      form.noq.focus();
+      return false;
+  }  
+   else
+  {
+  return true;
+  }
+}
+</script>
+        
+<center><h1>Qualifications</h1></center><hr />
+
+<form onsubmit="return checkForm(this);" class="lobster" action="redirect" method="post">
+
+<table>
+
+<tr>
+<td>Name of Qualification</td>
+	<td><select name="noq" class="stretch search">
+        <option selected="" value=""></option>
+        <option value="Bsc">Bsc</option>
+        <option value="Btech">Btech</option>
+        <option value="National Diploma">National Diploma</option>
+        <option value="Certificate">Certificate</option>
+        <option value="Grade 12">Grade 12</option>
+	</select></td>
+</tr>
+
+<tr><td>&nbsp;</td></tr>
+
+<tr>
+    <td>Field of Study</td>
+    <td><input type="text" name="fos" class="search"></td>
+</tr>
+
+<tr> <td>&nbsp;</td> </tr>
+
+<tr>
+<td>Field of internship</td>
+    <td><select name="foi" class="stretch search">
+        <option selected="" value=""></option>
+        <option value="Software Developer">Software Developer</option>
+        <option value="Network Support Technician">Network Support Technician</option>
+        <option value="Human Resources">Human Resources</option>
+        <option value="Sales and Marketing">Sales and Marketing</option>
+    </select></td>
+</tr> 
+
+<tr> <td>&nbsp;</td> </tr>
+
+<tr>
+    <td><input class="lobster button" type='submit' name='Continue' value="Continue"/></td>
+    <td><input class="lobster button" type='submit' name='Back' value="Back"></td>
+     
+</tr>
+</table>
+        </form>
+
+</form>
+</body>
+</center>
+</html>

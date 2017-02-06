@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+
+
+
+
+<head>
+    <script language="javascript" src="list.js"></script>
+	<title class="lobster">Registration Page</title>
+        <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+         rel = "stylesheet">
+      <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+      <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+      <link href="styling.css" rel="stylesheet" type="text/css" />
+      <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet" type="text/css">
+    
+</head>
+
+<center>
+<body id="Cancel" onload="fillCategory(); _fillCategory();" bgcolor="white" font-color="black">
+    <script type="text/javascript">
+$(function() {
+            $( "#datepicker-1" ).datepicker();
+         });
+</script>
+        
+<center><h1>Registration Page</h1></center><hr/>
+<center><h3>Personal Details</h3></center><hr/>
+<script type="text/javascript">
+		function checkForm(form){
+			if(form.name.value=="")
+			{ alert("Please enter your name");
+			  form.name.focus();
+			  return false;
+			}
+                        var re = /^[A-Za-z]+$/;
+      			if(!re.test(form.name.value)) {
+       			alert("Error: Name must have alphabetic characters only");
+        		form.name.focus();
+        		return false;
+     			 }
+                         if(form.surname.value=="")
+			{ alert("Please enter your surname");
+			  form.surname.focus();
+			  return false;
+			}
+
+			 re = /^[A-Za-z]+$/;
+      			if(!re.test(form.surname.value)) {
+       			alert("Error: Surame must have alphabetic characters only");
+        		form.surname.focus();
+        		return false;
+     			 }
+                         if(form.gender.value==" "){
+			   alert("Error: Please select your gender");
+			   form.gender.focus();
+		            return false;
+			}	
+                        if(form.race.value==" "){
+			alert("Error: Please select your race group");
+			form.race.focus();
+			return false;
+			}
+                        if(form.phone.value==""){
+			alert("Error: Please supply your fown number");
+			form.phone.focus();
+			return false;
+			}
+			//re= /^\+27[78][23467][0-9]{7}/;
+			re= /^[0-9]+$/;
+			if(!re.test(form.phone.value)){
+			alert("Error: Invalid phone number");
+			form.phone.focus();			
+			return false;
+			}	
+                        if(form.alt.value==""){
+			alert("Error: Please supply an alternative number");
+			form.alt.focus();
+			return false;
+			}
+			//re= /^\+27[78][23467][0-9]{7}/;
+			re= /^[0-9]+$/;
+			if(!re.test(form.alt.value)){
+			alert("Error: Invalid alternative number");
+			form.alt.focus();			
+			return false;
+			}
+                        if(form.phone.value==form.alt.value){
+			alert("Error: alternative phone should be different from personal phone");
+			form.alt.focus();
+			return false;
+			}
+                        
+                        if(form.phone.value.length < 10)
+			{
+				alert("Error: phone number must be 10 digits");
+				form.phone.focus();
+				return false;
+			}
+			if(form.alt.value.length < 10)
+			{
+				alert("Error: phone number must be 10 digits");
+				form.alt.focus();
+				return false;
+			}
+                        
+                        if(form.email.value=="")
+			{
+				alert("Error: Please supply an email address");
+				form.email.focus();
+				return false;
+			}
+			re= /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+			if(!re.test(form.email.value)){
+			 	alert("Error: Invalid email address e.g anele@littlepig.cc");
+				form.email.focus();
+				return false;
+				}
+                                if(form.code.value==""){
+				alert("Errror: please type your postal code");
+				form.code.focus();
+				return false;
+				}
+                                re= /^[0-9]+$/; 
+                        if(!re.test(form.code.value)){
+			alert("Error: postal code must have numericall values only");
+			form.code.focus();
+			return false;
+			}
+                        if(form.code.value.length < 4){
+			alert("Error: Postal code must have 4 numerical values");
+			form.code.focus();
+			return false;
+                        }
+                        
+                        if(form.code1.value==""){
+				alert("Errror: please type your postal code");
+				form.code1.focus();
+				return false;
+				}
+                                 re= /^[0-9]+$/; 
+                        if(!re.test(form.code1.value)){
+			alert("Error: postal code must have numericall values only");
+			form.code1.focus();
+			return false;
+			}
+                        if(form.code1.value.length < 4){
+			alert("Error: Postal code must have 4 numerical values");
+			form.code1.focus();
+			return false;
+                        }
+
+                return true;}
+
+
+
+</script>
+
+<form name="Registration"onsubmit="return checkForm(this);" action="adding" method="post">
+
+<table>
+    
+
+       
+
+        <tr>
+             <td>Name</td>
+             <td><input class="search" type="text" name="name" /></td>
+        </tr>
+
+        <tr> <td>&nbsp;</td> </tr>
+
+        <tr>
+             <td>Middle Name(s)</td>
+             <td><input class="search" type="text" name="middle" /></td>
+        </tr>
+
+        <tr> <td>&nbsp;</td> </tr>
+
+        <tr>
+             <td>Surname</td>
+             <td><input class="search" type="text" name="surname" /></td>
+        </tr>
+
+        <tr><td>&nbsp;</td></tr>
+
+        <tr>
+          <td>Date of Birth</td>
+          <td><input class="search stretch2" type="date" id = "datepicker-1" name="bday"></td>
+        </tr>
+
+        <tr> <td>&nbsp;</td> </tr>
+
+        <tr>
+        <td>Gender</td>
+        <td><select class ="stretch search" name="gender">
+         	<option value=" "></option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+         </select></td>  
+        </tr>
+
+        <tr> <td>&nbsp;</td> </tr>
+
+        <tr>
+        <td>Race</td> 
+        <td><select class="stretch search" name="race">
+            <option value=" "></option>
+            <option value="Black">Black</option>
+            <option value="Coloured">Coloured</option>
+            <option value="Indian">Indian</option>
+            <option value="White">White</option>
+            <option value="Other">Other</option>
+        </select></td>    
+        </tr>
+
+        <tr> <td>&nbsp;</td> </tr>
+
+        <tr>
+            <td>Phone Number </td>
+            <td><input class="search" type="text" name="phone"/></td>
+        </tr>
+
+        <tr> <td>&nbsp;</td> </tr>
+
+        <tr>
+            <td>Alternative Number </td>
+            <td><input class="search" type="text" name="alt"/></td>
+        </tr>
+
+        <tr> <td>&nbsp;</td> </tr>
+
+        <tr>
+            <td>Email </td>
+            <td><input class="search" type="text" name="email" /></td>
+        </tr>
+
+</table>
+
+<tr> <td>&nbsp;</td> </tr>
+
+<hr/><center><h3>Residential Address</h3></center><hr/>
+
+<tr><td>&nbsp;</td></tr>
+<table>
+    <div name="drop_list">
+        <tr>
+            <td>Street </td>
+            <td><input class="search" type="text" name="street" /></td>
+        </tr>
+
+        <tr> <td>&nbsp;</td> </tr>
+
+        <tr><td>Province</td>
+            <td><select class="search stretch" NAME="Province" onChange="SelectMunicipality();" >
+                <Option value=""></option>
+            </select></td>
+        </tr>
+        <tr> <td>&nbsp;</td> </tr>
+
+        <tr>
+            <td>Municipality</td>
+            <td><select class="search stretch" id="Municipality" NAME="Municipality" onChange="SelectCity();">
+                <Option value=""></option>
+            </select></td>
+        </tr>
+
+        <tr> <td>&nbsp;</td> </tr>
+
+        <tr>
+            <td>City</td>
+            <td><select class="search stretch" id="City" name="City">
+                <option value=""></option>
+            </select></td>
+        </tr>
+
+        <tr> <td>&nbsp;</td> </tr>
+
+        <tr>
+            <td>Postal Code </td>
+            <td><input class="search" type="text" name="code"/></td>
+        </tr>
+    </div>
+</table>
+
+
+
+<tr> <td>&nbsp;</td> </tr>
+<hr/><center><h3>Postal Address</h3></center><hr/>
+<tr><td>&nbsp;</td></tr>
+<table>
+        <tr>
+            <td>Street </td>
+            <td><input class="search" type="text" name="street1" /></td>
+        </tr>
+
+        <tr> <td>&nbsp;</td> </tr>
+
+        <tr><td>Province</td>
+            <td><select class="search stretch" NAME="_Province" onChange="_SelectMunicipality();" >
+                <Option value=""></option>
+            </select></td>
+        </tr>
+        <tr> <td>&nbsp;</td> </tr>
+
+        <tr>
+            <td>Municipality</td>
+            <td><select class="search stretch" id="_Municipality" NAME="_Municipality" onChange="_SelectCity();">
+                <Option value=""></option>
+            </select></td>
+        </tr>
+
+        <tr> <td>&nbsp;</td> </tr>
+
+        <tr>
+            <td>City</td>
+            <td><select class="search stretch" id="_City" name="_City">
+                <option value=""></option>
+            </select></td>
+        </tr>
+
+        <tr> <td>&nbsp;</td> </tr>
+
+        <tr>
+            <td>Postal Code </td>
+            <td><input class="search" type="text" name="code1"/></td>
+        </tr>
+
+        <tr> <td>&nbsp;</td> </tr>
+
+        <tr>
+            <td><input type='submit' name='submit' value="submit"  class="lobster button"    /></td>
+        </tr>
+
+
+</table>
+</form>
+</body>
+</html>

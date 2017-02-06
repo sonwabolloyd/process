@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet" type="text/css">
+<link href="styling.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+
+<head>
+	<title>Sign Up</title>
+
+
+</head>
+<div class="well">
+<body onload="document.SignUpPage.username.focus();">
+<center><h1>Sign Up</h1></center><hr/>
+<script type="text/javascript">
+
+  function checkForm(form)
+  {
+    if(form.username.value == "") {
+      alert("Error: Identity number field cannot be blank!");
+      form.username.focus();
+      return false;
+    }
+ 
+    re = /^(((\d{2}((0[13578]|1[02])(0[1-9]|[12]\d|3[01])|(0[13456789]|1[012])(0[1-9]|[12]\d|30)|02(0[1-9]|1\d|2[0-8])))|([02468][048]|[13579][26])0229))(( |-)(\d{4})( |-)(\d{3})|(\d{7}))/;
+
+    if(!re.test(form.username.value)) {
+      alert("Error: Invalid Id Number Please tryn again!");
+      form.username.focus();
+      return false;
+    }
+    if(form.pwd1.value!=form.pwd2.value)
+	{
+		alert("Error: passwords donnot match");
+		form.pwd1.focus();
+		return false;
+	}
+
+    if(form.pwd1.value != "" && form.pwd1.value == form.pwd2.value) {
+      if(form.pwd1.value.length < 6) {
+        alert("Error: Password must contain at least six characters!");
+        form.pwd1.focus();
+        return false;
+      }
+      if(form.pwd1.value == form.username.value) {
+        alert("Error: Password must be different from Username!");
+        form.pwd1.focus();
+        return false;
+      }
+      re = /[0-9]/;
+      if(!re.test(form.pwd1.value)) {
+        alert("Error: password must contain at least one number (0-9)!");
+        form.pwd1.focus();
+        return false;
+      }
+      re = /[a-z]/;
+      if(!re.test(form.pwd1.value)) {
+        alert("Error: password must contain at least one lowercase letter (a-z)!");
+        form.pwd1.focus();
+        return false;
+      }
+      re = /[A-Z]/;
+      if(!re.test(form.pwd1.value)) {
+        alert("Error: password must contain at least one uppercase letter (A-Z)!");
+        form.pwd1.focus();
+        return false;
+      }
+    } else {
+      alert("Error: Please check that you've entered and confirmed your password!");
+      form.pwd1.focus();
+      return false;
+    }
+
+    return true;
+  }
+
+</script>
+
+<center><table><form onsubmit="return checkForm(this);" action="userpass">
+	
+<tr>
+    <td>Identity Number</td>
+    <td><input type="text" name="username" class="search"/></td>
+</tr>
+
+<tr><td>&nbsp;</td></tr>
+
+<tr>
+     <td>Password</td>
+     <td><input type="password" name="pwd1" class="search"/></td>
+</tr>
+
+<tr><td>&nbsp;</td></tr>
+
+<tr>
+     <td>Confirm Password</td>
+     <td><input type="password" name="pwd2" class="search"/></td>
+</tr>
+
+<tr><td>&nbsp;</td></tr>
+
+<tr>
+    <td><input class="lobster button" type='submit' name='Sign Up' value="Sign Up"/></td>
+</tr>
+
+
+</form></table></center>
+</div>
+</body>
+</html>
